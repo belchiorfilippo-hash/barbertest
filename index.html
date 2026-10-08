@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Legacy Barbershop — Book Online</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f3ee;--ink:#0b0b0b;--mut:#6b675f;--card:#fff;--line:#d9d5cb;--acc:#0b0b0b;--on:#fff;--bad:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0b0b;--ink:#f4f1ea;--mut:#9b968b;--card:#151515;--line:#2a2a2a;--acc:#f4f1ea;--on:#0b0b0b;--bad:#ff8a80}}
+:root[data-theme="dark"]{--bg:#0b0b0b;--ink:#f4f1ea;--mut:#9b968b;--card:#151515;--line:#2a2a2a;--acc:#f4f1ea;--on:#0b0b0b;--bad:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:560px;margin:0 auto;padding:24px 18px 40px}
+.hero{text-align:center;padding:8px 0 20px}
+.hero svg{width:150px;height:150px}
+.hero p{margin:10px 0 0;color:var(--mut)}
+h2{font:600 12px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:26px 0 12px}
+.bl{font-family:UnifrakturCook,'Old English Text MT',serif;font-weight:700}
+.svc{display:grid;gap:10px}
+.o{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px;background:var(--card);border:1.5px solid var(--line);border-radius:14px;cursor:pointer;text-align:left;color:inherit;font:inherit;width:100%}
+.o b{font-size:17px}.o small{display:block;color:var(--mut)}
+.o .pr{font-size:22px;font-weight:700}
+.o.on,.d.on,.t.on{border-color:var(--acc);background:var(--acc);color:var(--on)}
+.o.on small{color:inherit;opacity:.75}
+.dates{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.d{flex:0 0 62px;padding:10px 0;display:flex;flex-direction:column;align-items:center;background:var(--card);border:1.5px solid var(--line);border-radius:12px;color:inherit;font:inherit;cursor:pointer}
+.d small{font-size:11px;opacity:.7;text-transform:uppercase}.d b{font-size:20px}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.t{padding:11px 0;background:var(--card);border:1.5px solid var(--line);border-radius:10px;color:inherit;font:500 14px Inter,sans-serif;cursor:pointer}
+.t:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+label{display:block;font-size:14px;font-weight:500;margin:0 0 12px}
+input{display:block;width:100%;margin-top:6px;padding:13px;font:16px Inter,sans-serif;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:10px}
+input:focus{outline:2px solid var(--acc);outline-offset:1px}
+.btn{display:block;width:100%;padding:16px;margin-top:8px;background:var(--acc);color:var(--on);border:0;border-radius:12px;font:700 16px Inter,sans-serif;cursor:pointer;text-align:center;text-decoration:none}
+.btn:disabled{opacity:.4}.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.sum{margin:14px 0 4px;padding:12px 14px;border:1px dashed var(--line);border-radius:10px;color:var(--mut);font-size:14px}
+.err{color:var(--bad);font-size:14px;min-height:20px;margin:8px 0 0}
+.mut{color:var(--mut)}
+.done{text-align:center;padding:30px 10px}.done h1{font-size:40px;margin:6px 0}
+.card{padding:16px;margin:16px 0;background:var(--card);border:1.5px solid var(--line);border-radius:14px;text-align:left}
+footer{margin-top:34px;text-align:center;font-size:13px;color:var(--mut)}footer a{color:inherit}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.stats div{padding:14px;background:var(--card);border:1.5px solid var(--line);border-radius:12px}.stats b{display:block;font-size:26px}
+.row{display:grid;grid-template-columns:70px 1fr auto auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.row small{display:block;color:var(--mut)}.row a{color:inherit}
+.row button{background:none;border:1.5px solid var(--line);border-radius:8px;padding:6px 9px;color:inherit;font:12px Inter,sans-serif;cursor:pointer}
+.row button.sure{border-color:var(--bad);color:var(--bad)}
+.day{font-weight:700;margin:22px 0 2px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}.d:disabled{opacity:.35;cursor:not-allowed}
+.row2{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.row2 button{background:none;border:1.5px solid var(--line);border-radius:8px;padding:6px 9px;color:inherit;font:12px Inter,sans-serif;cursor:pointer}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="lg" viewBox="0 0 400 400"><circle cx="200" cy="200" r="197" fill="#000" stroke="#fff" stroke-width="3"/>
+<g fill="#fff" font-family="UnifrakturCook,'Old English Text MT',serif" font-weight="700" text-anchor="middle">
+<path d="M34 112Q68 107 102 112Q68 117 34 112ZM298 112Q332 107 366 112Q332 117 298 112Z"/>
+<text x="200" y="124" font-size="32" letter-spacing="6">Barbería</text>
+<text x="200" y="232" font-size="92" textLength="320" lengthAdjust="spacingAndGlyphs">LEGACY</text>
+<path id="arc" d="M62 268A190 190 0 0 0 338 268" fill="none"/>
+<text font-size="36" letter-spacing="9"><textPath href="#arc" startOffset="50%">BARBERSHOP</textPath></text>
+</g></symbol></defs></svg>
+
+<main class="wrap">
+<section id="book">
+  <div class="hero"><svg role="img" aria-label="Legacy Barbershop logo"><use href="#lg"/></svg><p>Book your appointment in under a minute.</p></div>
+  <div id="form">
+    <h2>1 · Choose a service</h2>
+    <div class="svc" id="svc"></div>
+    <h2>2 · Pick a date</h2>
+    <div class="dates" id="dates"></div>
+    <h2>3 · Pick a time</h2>
+    <div class="slots" id="slots"></div>
+    <h2>4 · Your details</h2>
+    <label>Full name<input id="nm" autocomplete="name" placeholder="John Smith"></label>
+    <label>Phone number<input id="wa" type="tel" autocomplete="tel" placeholder="(919) 555-0123"></label>
+    <div class="sum" id="sum">Select a service, date and time to continue.</div>
+    <p class="err" id="err"></p>
+    <button class="btn" id="go" type="button">Confirm Appointment</button>
+  </div>
+  <div id="ok" class="done" hidden></div>
+  <footer>Open Monday – Saturday · 9:00 AM – 6:00 PM · Closed Sunday<br><a href="#admin">Owner dashboard</a></footer>
+</section>
+
+<section id="adm" hidden>
+  <div class="hero" style="padding-bottom:0"><svg role="img" aria-label="Legacy Barbershop logo" style="width:90px;height:90px"><use href="#lg"/></svg></div>
+  <h2 style="text-align:center">Owner dashboard</h2>
+  <div id="login"><label>Owner password<input id="pw" type="password" autocomplete="current-password"></label><p class="err" id="lerr"></p><button class="btn" id="lgo" type="button">Sign in</button></div>
+<div id="panel" hidden>
+<div class="tabs"><button type="button" class="t on" data-tab="a">Appointments</button><button type="button" class="t" data-tab="v">Availability</button></div>
+<div id="alist"></div><div id="avail" hidden></div>
+<button class="btn alt" id="out" type="button" style="margin-top:24px">Sign out</button></div>
+
+  <a class="btn alt" href="#">← Back to booking page</a>
+</section>
+</main>
+
+<script>
+const $=s=>document.querySelector(s);
+const SV={haircut:{n:"Haircut",p:30,d:"30 min · Cut, style and a clean finish"},beard:{n:"Beard Trim",p:20,d:"30 min · Shaped, trimmed and tidy"}};
+const S={svc:null,date:null,time:null},pad=n=>String(n).padStart(2,"0"),TIMES=[];
+for(let h=9;h<18;h++)["00","30"].forEach(m=>TIMES.push(pad(h)+":"+m));
+const iso=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const ft=t=>{const[h,m]=t.split(":").map(Number);return(h%12||12)+":"+pad(m)+" "+(h<12?"AM":"PM")};
+const fd=s=>new Date(s+"T12:00").toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"});
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const key=(d,t)=>d+"_"+t.replace(":","");
+let taken=new Set(),blocks=[],all=[],BD=iso(new Date()),tok=null;
+try{tok=sessionStorage.getItem("lt")}catch(e){}
+const setTok=t=>{tok=t;try{t?sessionStorage.setItem("lt",t):sessionStorage.removeItem("lt")}catch(e){}};
+async function api(p,o={}){const r=await fetch(p,{method:o.method||"GET",headers:{"Content-Type":"application/json",...(tok?{Authorization:"Bearer "+tok}:{})},body:o.body?JSON.stringify(o.body):undefined});const j=await r.json().catch(()=>({}));if(!r.ok)throw Object.assign(new Error(j.error||"Error"),{status:r.status});return j}
+const bd=()=>new Set(blocks.filter(b=>!b.time).map(b=>b.date)),bs=()=>new Set(blocks.filter(b=>b.time).map(b=>key(b.date,b.time)));
+async function load(){try{const j=await api("/api/slots");taken=new Set(j.taken);blocks=j.blocks;renderDates();renderSlots()}catch(e){}}
+
+function renderSvc(){$("#svc").innerHTML=Object.entries(SV).map(([k,v])=>`<button type="button" class="o${S.svc===k?" on":""}" data-s="${k}"><span><b>${v.n}</b><small>${v.d}</small></span><span class="pr">$${v.p}</span></button>`).join("")}
+function renderDates(){const a=[],n=new Date(),B=bd(),el=$("#dates"),sc=el.scrollLeft;for(let i=0;a.length<14;i++){const d=new Date(n.getFullYear(),n.getMonth(),n.getDate()+i);if(d.getDay())a.push(d)}
+if(B.has(S.date)){S.date=null;S.time=null}
+el.innerHTML=a.map(d=>{const s=iso(d),L=o=>d.toLocaleDateString("en-US",o);return`<button type="button" class="d${S.date===s?" on":""}" data-d="${s}"${B.has(s)?" disabled":""}><small>${L({weekday:"short"})}</small><b>${d.getDate()}</b><small>${L({month:"short"})}</small></button>`}).join("");el.scrollLeft=sc}
+function renderSlots(){const el=$("#slots");if(!S.date){el.innerHTML='<p class="mut" style="grid-column:1/-1;margin:0">Pick a date first.</p>';return}
+const now=new Date(),today=iso(now),B=bs();if(S.time&&(taken.has(key(S.date,S.time))||B.has(key(S.date,S.time))))S.time=null;
+el.innerHTML=TIMES.map(t=>{const[h,m]=t.split(":").map(Number),k=key(S.date,t),off=(S.date===today&&h*60+m<=now.getHours()*60+now.getMinutes())||taken.has(k)||B.has(k);return`<button type="button" class="t${S.time===t?" on":""}" data-t="${t}"${off?" disabled":""}>${ft(t)}</button>`}).join("");sum()}
+function sum(){const v=SV[S.svc];$("#sum").textContent=v&&S.date&&S.time?`${v.n} · ${fd(S.date)} at ${ft(S.time)} · $${v.p} (pay at the shop)`:"Select a service, date and time to continue."}
+
+async function submit(){
+const name=$("#nm").value.trim(),ph=$("#wa").value.trim(),err=$("#err");err.textContent="";
+if(!S.svc||!S.date||!S.time)return void(err.textContent="Please choose a service, date and time.");
+if(name.length<2)return void(err.textContent="Please enter your name.");
+if(ph.replace(/\D/g,"").length<10)return void(err.textContent="Please enter a valid phone number.");
+$("#go").disabled=true;
+try{await api("/api/book",{method:"POST",body:{service:S.svc,date:S.date,time:S.time,name,phone:ph}});const v=SV[S.svc];done({service:v.n,price:v.p,date:S.date,time:S.time,name,phone:ph});load()}
+catch(e){err.textContent=e.status===409?e.message:"We couldn't save your booking. Please try again.";$("#go").disabled=false;if(e.status===409)load()}}
+function done(b){$("#form").hidden=true;const o=$("#ok");o.hidden=false;
+o.innerHTML=`<div class="bl" style="font-size:20px;color:var(--mut)">Thank you</div><h1 class="bl">You're booked!</h1>
+<div class="card"><b>${esc(b.service)} · $${b.price}</b><br>${fd(b.date)} at ${ft(b.time)}<br><span class="mut">${esc(b.name)} · ${esc(b.phone)}</span></div>
+<p class="mut">The shop has been notified. We'll reach out by phone if anything changes. See you soon!</p>
+<a class="btn alt" href="#" onclick="location.reload();return false">Book another appointment</a>`;window.scrollTo(0,0)}
+
+async function enter(){try{all=(await api("/api/admin/bookings")).bookings;$("#login").hidden=true;$("#panel").hidden=false;rAdmin();rAvail()}catch(e){setTok(null);$("#login").hidden=false;$("#panel").hidden=true}}
+async function login(){const e=$("#lerr");e.textContent="";try{setTok((await api("/api/admin/login",{method:"POST",body:{password:$("#pw").value}})).token);$("#pw").value="";enter()}catch(x){e.textContent=x.status===429?"Too many attempts. Please try again later.":"Incorrect password."}}
+function rAdmin(){const t=iso(new Date()),up=all.filter(b=>b.date>=t).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)),rev=up.reduce((s,b)=>s+b.price,0);
+let h=`<div class="stats"><div><b>${up.length}</b><span class="mut">Upcoming</span></div><div><b>$${rev}</b><span class="mut">Expected revenue</span></div></div>`,day="";
+if(!up.length)h+='<p class="mut" style="text-align:center">No upcoming appointments yet.</p>';
+up.forEach(b=>{if(b.date!==day){day=b.date;h+=`<div class="day">${fd(day)}</div>`}
+h+=`<div class="row"><b>${ft(b.time)}</b><span>${esc(b.name)}<small>${esc(b.service)} · $${b.price} · ${esc(b.phone)}</small></span><a href="tel:${esc(b.phone.replace(/[^\d+]/g,""))}">Call</a><button data-x="${b.id}">Cancel</button></div>`});
+$("#alist").innerHTML=h}
+function rAvail(){const B=bs(),X=bd().has(BD),today=iso(new Date());
+const lst=blocks.filter(b=>b.date>=today).sort((a,b)=>(a.date+(a.time||"")).localeCompare(b.date+(b.time||""))).map(b=>`<div class="row2"><span>${fd(b.date)} · ${b.time?ft(b.time):"All day"}</span><button data-ub="${b.date}|${b.time||""}">Unblock</button></div>`).join("")||'<p class="mut">Nothing blocked.</p>';
+$("#avail").innerHTML=`<label>Date<input id="bd" type="date" min="${today}" value="${BD}"></label><button class="btn alt" data-day="1">${X?"Unblock entire day":"Block entire day"}</button><h2>Times · filled = blocked</h2><div class="slots">${TIMES.map(t=>`<button type="button" class="t${B.has(key(BD,t))?" on":""}" data-bt="${t}"${X?" disabled":""}>${ft(t)}</button>`).join("")}</div><h2>Current blocks</h2>${lst}`}
+async function del(id){try{await api("/api/admin/bookings/"+id,{method:"DELETE"});all=all.filter(b=>b.id!==id);rAdmin();load()}catch(e){enter()}}
+async function tog(date,time){const on=!(time?bs().has(key(date,time)):bd().has(date));try{await api("/api/admin/block",{method:"POST",body:{date,time:time||null,blocked:on}});await load();rAvail()}catch(e){enter()}}
+function tab(k){$("#alist").hidden=k!=="a";$("#avail").hidden=k!=="v";document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("on",b.dataset.tab===k))}
+function route(){const a=location.hash==="#admin";$("#book").hidden=a;$("#adm").hidden=!a;if(a){$("#login").hidden=!!tok;$("#panel").hidden=!tok;if(tok)enter()}window.scrollTo(0,0)}
+
+document.addEventListener("click",e=>{const c=e.target.closest("[data-s],[data-d],[data-t],[data-x],[data-day],[data-bt],[data-ub],[data-tab],#go,#lgo,#out");if(!c)return;const d=c.dataset;
+if(d.s){S.svc=d.s;renderSvc();sum()}
+else if(d.d){S.date=d.d;S.time=null;renderDates();renderSlots()}
+else if(d.t){S.time=d.t;renderSlots()}
+else if(d.x){if(c.classList.contains("sure"))del(d.x);else{c.classList.add("sure");c.textContent="Sure?"}}
+else if(d.day)tog(BD,null);
+else if(d.bt)tog(BD,d.bt);
+else if(d.ub){const[a,b]=d.ub.split("|");tog(a,b||null)}
+else if(d.tab)tab(d.tab);
+else if(c.id==="lgo")login();
+else if(c.id==="out"){setTok(null);route()}
+else submit()});
+addEventListener("hashchange",route);
+addEventListener("change",e=>{if(e.target.id==="bd"){BD=e.target.value||BD;rAvail()}});
+addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="pw")login()});
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)load()});
+renderSvc();renderDates();renderSlots();route();load();
+
+</script>
+</body>
+</html>
